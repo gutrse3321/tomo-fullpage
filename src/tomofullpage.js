@@ -59,7 +59,16 @@ class TomoFullPage {
         this.changeCurrentPage(e)
       }, this.wait)
     })
-
+    document.addEventListener('keydown', e => {
+      // 防止过快的滚动
+      if (this.timer) {
+        clearTimeout(this.timer)
+      }
+      // 获取的时间后才能继续滑动
+      this.timer = setTimeout(() => {
+        this.changeCurrentPage(e)
+      }, this.wait)
+    })
     // 窗口大小改变事件
     window.addEventListener('resize', () => {
       // 窗口大小改变的时候，重新获取高度的列表和移动到正确的位置
@@ -82,6 +91,21 @@ class TomoFullPage {
       if (this.currentPage > 0) {
         this.currentPage--
         console.log(`向上滑：${this.currentPage}`)
+        this.movePage()
+      }
+    }
+
+    // 键盘值
+    if (e.keyCode === 38) {
+      if (this.currentPage > 0) {
+        this.currentPage--
+        console.log(`向上滑：${this.currentPage}`)
+        this.movePage()
+      }
+    } else if (e.keyCode === 40) {
+      if (this.currentPage < this.MainChild.length - 1) {
+        this.currentPage++
+        console.log(`向下滑：${this.currentPage}`)
         this.movePage()
       }
     }
