@@ -33,5 +33,5 @@ new TomoFullPage({
 [ ]横向滚动<br>
 [ ]手机滑动事件<br>
 [ ]鼠标拖动<br>
-[ ]键盘事件<br>
+[x]键盘事件(待优化)<br>
 [ ]NPM包<br>
