@@ -59,7 +59,25 @@ class TomoFullPage {
         this.changeCurrentPage(e)
       }, this.wait)
     })
+    // 键盘事件
     document.addEventListener('keydown', e => {
+      // 防止过快的滚动
+      if (this.timer) {
+        clearTimeout(this.timer)
+      }
+      // 获取的时间后才能继续滑动
+      this.timer = setTimeout(() => {
+        this.changeCurrentPage(e)
+      }, this.wait)
+    })
+    // 触屏事件
+    this.MainElement.addEventListener('touchstart', e => {
+      let touch = e.changedTouches
+      this.starty = touch[0].clientY
+    })
+    this.MainElement.addEventListener('touchend', e => {
+      let touch = e.changedTouches
+      this.endy = touch[0].clientY
       // 防止过快的滚动
       if (this.timer) {
         clearTimeout(this.timer)
@@ -81,31 +99,18 @@ class TomoFullPage {
   changeCurrentPage (e) {
     // 传入event事件
     // e.deltaY为正数 向下，负向上
-    if (e.deltaY > 0) {
+    if (e.deltaY > 0 || e.keyCode === 40 || this.starty > this.endy) {
       if (this.currentPage < this.MainChild.length - 1) {
         this.currentPage++
         console.log(`向下滑：${this.currentPage}`)
+        console.log(`Y：${this.starty},X：${this.endy}`)
         this.movePage()
       }
-    } else if (e.deltaY < 0) {
+    } else if (e.deltaY < 0 || e.keyCode === 38 || this.starty < this.endy) {
       if (this.currentPage > 0) {
         this.currentPage--
         console.log(`向上滑：${this.currentPage}`)
-        this.movePage()
-      }
-    }
-
-    // 键盘值
-    if (e.keyCode === 38) {
-      if (this.currentPage > 0) {
-        this.currentPage--
-        console.log(`向上滑：${this.currentPage}`)
-        this.movePage()
-      }
-    } else if (e.keyCode === 40) {
-      if (this.currentPage < this.MainChild.length - 1) {
-        this.currentPage++
-        console.log(`向下滑：${this.currentPage}`)
+        console.log(`Y：${this.starty},X：${this.endy}`)
         this.movePage()
       }
     }
