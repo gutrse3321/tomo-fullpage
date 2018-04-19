@@ -72,6 +72,7 @@ class TomoFullPage {
     })
     // 触屏事件
     this.MainElement.addEventListener('touchstart', e => {
+      e.preventDefault()
       let touch = e.changedTouches
       this.starty = touch[0].clientY
     })

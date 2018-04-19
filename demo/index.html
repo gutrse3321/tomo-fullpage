@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/style.css">
+  <title>单页全屏滚动</title>
+  <style>
+    /* reset */
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /* index */
+    section,div {
+      height: 100%;
+    }
+    div:nth-child(1) {
+      background: #D1EEEE;
+    }
+    div:nth-child(2) {
+      background: #EEEE00;
+    }
+    div:nth-child(3) {
+      background: #8B0000;
+    }
+    div:nth-child(4) {
+      background: #66CD00;
+    }
+    div:nth-child(5) {
+      background: #8B6914;
+    }
+    div:nth-child(6) {
+      background: #292929;
+    }
+  </style>
+</head>
+<body>
+  <section class="wrapper">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+  </section>
+  <script src="./../dist/tomofullpage.min.js"></script>
+  <script>
+    var wrapper = document.querySelector('.wrapper');
+    new TomoFullPage({
+      mainEl: wrapper,
+      speed: '.8s',
+      wait: 200
+    })
+  </script>
+</body>
+</html>
