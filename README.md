@@ -1,6 +1,6 @@
 # tomo-fullpage
 一个全屏滚动的插件。使用ES6与部分ESLint规范。重新创建个仓库来完善。
-原先写的是在这：[单页全屏滚动](https://github.com/gutrse3321/my-front-practice/tree/master/tomo-fullpage)。[DEMO](https://gutrse3321.github.io/my-front-practice/tomo-fullpage/demo/)
+原先写的是在这：[单页全屏滚动](https://github.com/gutrse3321/my-front-practice/tree/master/tomo-fullpage)。[DEMO](https://gutrse3321.github.io/tomo-fullpage/demo/)
 ## 参数
 | 参数       | 说明  |
 | --------   | -----|
